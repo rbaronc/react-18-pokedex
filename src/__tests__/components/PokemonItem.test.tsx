@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import axios from 'axios';
-import { PokemonItem } from '../components/PokemonItem';
-import { GET_POKEMON } from '../fixtures/PokemonItem/fixture';
+import { PokemonItem } from '@/components/PokemonItem';
+import { GET_POKEMON } from '@/fixtures/components/PokemonItem/fixture';
 import { act } from 'react-dom/test-utils';
 
 beforeEach(async ()=> {
