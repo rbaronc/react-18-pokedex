@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import axios from 'axios';
 import { PokemonItem } from '../components/PokemonItem';
-import { GET_POKEMON } from '../PokemonItem/fixture';
+import { GET_POKEMON } from '../fixtures/PokemonItem/fixture';
 import { act } from 'react-dom/test-utils';
 
 beforeEach(async ()=> {
@@ -10,7 +10,7 @@ beforeEach(async ()=> {
     axios.get = jest.fn().mockResolvedValue({data: GET_POKEMON});
 });
 
-describe('Pokemon gets rendered', () => {
+describe('PokemonItem', () => {
     it('has an ID', async () => {
         await waitFor(() => {
             const pokemonID = screen.getByText(/1/i);
