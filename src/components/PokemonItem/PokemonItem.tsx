@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function PokemonItem(): React.ReactNode {
+export default function PokemonItem(): React.ReactNode {
     const [pokemon, setPokemon] = useState({
         id: 0, 
         name: '',
@@ -22,12 +22,15 @@ function PokemonItem(): React.ReactNode {
 
     return (
         <div>
-            <p><span>ID:</span> {pokemon.id} </p>
-            <p><span>Name:</span> {pokemon.name} </p>
-            <img src={pokemon.imgUrl} alt="" />
+            <div>
+                <span>ID:</span>
+                <p>{pokemon.id}</p> 
+            </div>
+            <div>
+                <span>Name:</span>
+                <p>{pokemon.name}</p> 
+            </div>
+            <img src={pokemon.imgUrl} alt={pokemon.name} />
         </div>
     );    
 }
-
-export default PokemonItem;
-

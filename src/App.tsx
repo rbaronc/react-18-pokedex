@@ -1,4 +1,3 @@
-import React from 'react';
 import { PokemonItem } from "./components/PokemonItem/";
 
 function App() {
