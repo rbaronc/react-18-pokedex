@@ -1,36 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { Pokemon } from "@/models";
 
-export default function PokemonItem(): React.ReactNode {
-    const [pokemon, setPokemon] = useState({
-        id: 0, 
-        name: '',
-        imgUrl: ''
-    });
+import './styles.css';
 
-    useEffect(() => {
-        const pokemonId = 1;
-        axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
-            .then(({data}) => {
-                setPokemon({
-                    name: data.name, 
-                    id: data.id, 
-                    imgUrl: data?.sprites?.other?.dream_world?.front_default
-                })
-            });
-        }, []);
+type PokemonItemProps = {
+    pokemon: Pokemon
+};
 
+export default function PokemonItem({pokemon}: PokemonItemProps): React.ReactNode {
     return (
-        <div>
-            <div>
+        <div className="pokemon-item">
+            <div className="id">
                 <span>ID:</span>
                 <p>{pokemon.id}</p> 
             </div>
-            <div>
+            <div className="name">
                 <span>Name:</span>
                 <p>{pokemon.name}</p> 
             </div>
-            <img src={pokemon.imgUrl} alt={pokemon.name} />
+            <img className="image" src={pokemon.imageURL} alt={pokemon.name} />
         </div>
     );    
 }

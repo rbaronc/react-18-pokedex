@@ -7,5 +7,6 @@ export default {
     setupFilesAfterEnv: [ '<rootDir>/jest.setup.js' ],
     moduleNameMapper: {
         "^@/(.*)$": "<rootDir>/src/$1",
+        "^.+\\.(css|less)$": "<rootDir>/CSSTub.js",
     }
 }
