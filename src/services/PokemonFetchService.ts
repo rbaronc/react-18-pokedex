@@ -35,10 +35,8 @@ export default class PokemonFetchService {
         return new Promise((resolve, reject) => {
             axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=50`)
             .then(async ({ data }) => {
-                const pokemonList = await this.processPokemonListResult(data?.results)
-                resolve({
-                    ...pokemonList
-                });
+                const pokemonList = await this.processPokemonListResult(data?.results);
+                resolve(pokemonList);
             })
             .catch((error) => {
                 reject(error);
