@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { Pokemon, PokemonResultAPI } from '@/models';
+import POKEMON_API_V2_URL from '@/constants/urls';
 
 export default class PokemonFetchService {
 
@@ -17,7 +18,7 @@ export default class PokemonFetchService {
     }
 
     private static async getPokemon(pokemonID: string): Promise<Pokemon> {
-        const {data} = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonID}`);
+        const {data} = await axios.get(`${POKEMON_API_V2_URL}/${pokemonID}`);
 
         return {
             name: data.name, 
@@ -33,14 +34,14 @@ export default class PokemonFetchService {
 
     public static getPokemonList(): Promise<Record<string, Pokemon>> {
         return new Promise((resolve, reject) => {
-            axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=50`)
-            .then(async ({ data }) => {
-                const pokemonList = await this.processPokemonListResult(data?.results);
-                resolve(pokemonList);
-            })
-            .catch((error) => {
-                reject(error);
-            });
+            axios.get(`${POKEMON_API_V2_URL}/?offset=0&limit=50`)
+                .then(async ({ data }) => {
+                    const pokemonList = await this.processPokemonListResult(data?.results);
+                    resolve(pokemonList);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
         });
     }
 }

@@ -3,7 +3,7 @@ import PokemonFetchService from '@/services/PokemonFetchService';
 import { act } from 'react-dom/test-utils';
 
 import { PokemonList } from '@/components/PokemonList';
-import { GET_POKEMON_LIST as mockPkmnList } from '@/fixtures/axios/get/pokemonList/fixture';
+import { GET_POKEMON_LIST as mockPkmnList } from '@/fixtures/axios/get/pokemonList/processed-list-fixture';
 
 describe('PokemonList', () => {
     it('Renders', async () => {

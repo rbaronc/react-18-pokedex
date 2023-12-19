@@ -1,13 +1,11 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import axios from 'axios';
+
 import { PokemonItem } from '@/components/PokemonItem';
-import { GET_POKEMON } from '@/fixtures/axios/get/pokemon/fixture';
 import POKEMON from '@/fixtures/models/pokemon';
 
 beforeEach(async ()=> {
     render(<PokemonItem pokemon={POKEMON}/>);
     jest.mock('axios');
-    axios.get = jest.fn().mockResolvedValue({data: GET_POKEMON});
 });
 
 describe('PokemonItem', () => {
