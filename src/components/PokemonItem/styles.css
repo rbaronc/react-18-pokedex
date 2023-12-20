@@ -1,0 +1,14 @@
+.pokemon-item {
+    background-color: black;
+    color: white;
+    margin: 1rem;
+}
+
+.pokemon-item .id{
+    background-color: green;
+}
+
+.pokemon-item .image{
+    width: 10rem;
+    height: 10rem;
+}
