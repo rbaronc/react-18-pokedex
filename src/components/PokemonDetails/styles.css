@@ -1,0 +1,12 @@
+.pokemon-details {
+    text-align: center;
+}
+
+.pokemon-details .name{
+    text-transform: capitalize;
+}
+
+.pokemon-details .image{
+    width: 30rem;
+    height: 30rem;
+}

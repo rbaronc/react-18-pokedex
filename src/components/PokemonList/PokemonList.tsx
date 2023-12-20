@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import Grid from '@mui/material/Grid';
 
 import PokemonFetchService from "@/services/PokemonFetchService";
 import { Pokemon } from "@/models";
@@ -18,20 +19,22 @@ export default function PokemonList(): React.ReactNode {
     }, []);
 
     const pokemonIDs: string[] = Object.keys(pokemonList);
-    const noPokemonsComponent = <p>No Pokemos available.</p>
+    const noPokemonsComponent = <Grid item xs={12}>No Pokemos available.</Grid>
     const pokemonRenderList = pokemonIDs.map((pokemonID: string) => {
         const pokemon = pokemonList[pokemonID];
         return (
-            <PokemonItem key={`${pokemon.name}-${pokemon.id}`} pokemon={pokemon}/>
+            <Grid item xs={4} key={`${pokemon.name}-${pokemon.id}`}>
+                <PokemonItem pokemon={pokemon}/>
+            </Grid>
         );
     });
 
     return(
         <div className="pokemon-list">
             <div className="header">Pokemon List!</div>
-            <div className="list">
+            <Grid container className="list">
                 {pokemonIDs.length? pokemonRenderList: noPokemonsComponent}
-            </div>            
+            </Grid>            
         </div>
     );
 }
