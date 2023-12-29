@@ -6,30 +6,45 @@ import Typography from "@mui/material/Typography";
 
 import { RootState } from "@/redux/store/store";
 
-import './styles.css';
+import "./styles.css";
 
 export default function PokemonDetails() {
-    const selectedPokemon = useSelector((state: RootState) => state.selectedPokemon.pokemon);
+    const selectedPokemon = useSelector(
+        (state: RootState) => state.selectedPokemon.pokemon
+    );
 
     return (
-        <Card className="pokemon-details">            
+        <Card className="pokemon-details">
             <CardContent>
                 <Grid container>
-                    <Grid item className="id" xs={2}>
-                        <Typography color="text.secondary" gutterBottom>
+                    <Grid item className="id" xs={4}>
+                        <Typography
+                            variant="h5"
+                            color="text.secondary"
+                            gutterBottom
+                        >
                             {selectedPokemon.id}
                         </Typography>
                     </Grid>
-                    <Grid item className="name" xs={6}>
-                        <Typography color="text.secondary" gutterBottom>
+                    <Grid item className="name" xs={8}>
+                        <Typography
+                            variant="h5"
+                            color="text.secondary"
+                            gutterBottom
+                        >
                             {selectedPokemon.name}
                         </Typography>
                     </Grid>
-                    <Grid item xs={10}>
-                        <img className="image" src={selectedPokemon.imageURL} alt={selectedPokemon.name} />
+                    <Grid item xs={12} className="image-container">
+                        <img
+                            className="image"
+                            loading="lazy"
+                            src={selectedPokemon.showDownImage}
+                            alt={selectedPokemon.name}
+                        />
                     </Grid>
-                    <Grid item xs={12}>
-                        <Typography variant="body2">
+                    <Grid item xs={12} className="description">
+                        <Typography variant="h6">
                             {selectedPokemon.description}
                         </Typography>
                     </Grid>
@@ -37,4 +52,4 @@ export default function PokemonDetails() {
             </CardContent>
         </Card>
     );
-};
+}

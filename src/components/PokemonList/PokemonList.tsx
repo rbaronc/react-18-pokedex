@@ -25,7 +25,7 @@ export default function PokemonList(): React.ReactNode {
     const pokemonRenderList = pokemonIDs.map((pokemonID: string) => {
         const pokemon = pokemonList[pokemonID];
         return (
-            <Grid item xs={4} key={`${pokemon.name}-${pokemon.id}`}>
+            <Grid item xs={4} className='item-container' key={`${pokemon.name}-${pokemon.id}`}>
                 <PokemonItem pokemon={pokemon}/>
             </Grid>
         );

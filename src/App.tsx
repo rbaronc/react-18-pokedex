@@ -10,11 +10,11 @@ function App() {
     <Box>
       <p>Pokedex!</p>
       <Grid container>
-        <Grid xs={6} item>
+        <Grid xs={8} item>
           <PokemonList />
         </Grid>
 
-        <Grid xs={6} item>
+        <Grid xs={4} item>
           <PokemonDetails></PokemonDetails>
         </Grid>
       </Grid>

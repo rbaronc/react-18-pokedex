@@ -24,7 +24,8 @@ export default class PokemonFetchService {
         return {
             name: data.name, 
             id: data.id.toString(), 
-            imageURL: data?.sprites?.other?.dream_world?.front_default,
+            listImageURL: data?.sprites?.other?.dream_world?.front_default,
+            showDownImage: data?.sprites?.other?.showdown?.front_default,
             description: this.getDescription(pokemonSpecies)
         };
     }

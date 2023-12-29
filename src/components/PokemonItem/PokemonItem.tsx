@@ -1,36 +1,63 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React from "react";
+import { useDispatch } from "react-redux";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 
 import { Pokemon } from "@/models";
-import { setSelectedPokemon } from '@/redux/slices/selected-pokemon-slice';
+import { setSelectedPokemon } from "@/redux/slices/selected-pokemon-slice";
 
-import './styles.css';
+import "./styles.css";
 
 type PokemonItemProps = {
-    pokemon: Pokemon
+    pokemon: Pokemon;
 };
 
-export default function PokemonItem({pokemon}: PokemonItemProps): React.ReactNode {
-
+export default function PokemonItem({
+    pokemon,
+}: PokemonItemProps): React.ReactNode {
     const dispatch = useDispatch();
     const handlePokemonItemClick = (pokemon: Pokemon) => {
-        
         dispatch(setSelectedPokemon(pokemon));
     };
 
     return (
-        <div className="pokemon-item" onClick={() => {
-            handlePokemonItemClick(pokemon);
-        }}>
-            <div className="id">
-                <span>ID:</span>
-                <p>{pokemon.id}</p> 
-            </div>
-            <div className="name">
-                <span>Name:</span>
-                <p>{pokemon.name}</p> 
-            </div>
-            <img className="image" src={pokemon.imageURL} alt={pokemon.name} />
-        </div>
-    );    
+        <Card className="pokemon-item" variant="outlined">
+            <CardContent>
+                <Grid
+                    container
+                    onClick={() => {
+                        handlePokemonItemClick(pokemon);
+                    }}
+                >
+                    <Grid item className="id" xs={2}>
+                        <Typography
+                            variant="h5"
+                            color="text.secondary"
+                            gutterBottom
+                        >
+                            #{pokemon.id}
+                        </Typography>
+                    </Grid>
+                    <Grid item className="name" xs={10}>
+                        <Typography
+                            variant="h5"
+                            color="text.secondary"
+                            gutterBottom
+                        >
+                            {pokemon.name}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12} className="image-container">
+                        <img
+                            className="image"
+                            src={pokemon.listImageURL}
+                            alt={pokemon.name}
+                        />
+                    </Grid>
+                </Grid>
+            </CardContent>
+        </Card>
+    );
 }
