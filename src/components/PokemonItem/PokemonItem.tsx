@@ -13,7 +13,10 @@ type PokemonItemProps = {
 export default function PokemonItem({pokemon}: PokemonItemProps): React.ReactNode {
 
     const dispatch = useDispatch();
-    const handlePokemonItemClick = (pokemon: Pokemon) => ( dispatch(setSelectedPokemon(pokemon)) );
+    const handlePokemonItemClick = (pokemon: Pokemon) => {
+        
+        dispatch(setSelectedPokemon(pokemon));
+    };
 
     return (
         <div className="pokemon-item" onClick={() => {

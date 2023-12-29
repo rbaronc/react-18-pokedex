@@ -5,6 +5,8 @@ import PokemonFetchService from "@/services/PokemonFetchService";
 import { Pokemon } from "@/models";
 import { PokemonItem } from "../PokemonItem";
 
+import './styles.css';
+
 export default function PokemonList(): React.ReactNode {
     const [pokemonList, setPokemonList] = useState<Record<string, Pokemon>>({});
 

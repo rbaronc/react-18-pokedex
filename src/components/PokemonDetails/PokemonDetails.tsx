@@ -14,23 +14,27 @@ export default function PokemonDetails() {
     return (
         <Card className="pokemon-details">            
             <CardContent>
-            <Grid container>
-                <Grid item xs={2}>{selectedPokemon.id}</Grid>
-                <Grid item className="name" xs={6}>{selectedPokemon.name}</Grid>
-                <Grid item xs={10}>
-                    <img className="image" src={selectedPokemon.imageURL} alt={selectedPokemon.name} />
+                <Grid container>
+                    <Grid item className="id" xs={2}>
+                        <Typography color="text.secondary" gutterBottom>
+                            {selectedPokemon.id}
+                        </Typography>
+                    </Grid>
+                    <Grid item className="name" xs={6}>
+                        <Typography color="text.secondary" gutterBottom>
+                            {selectedPokemon.name}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={10}>
+                        <img className="image" src={selectedPokemon.imageURL} alt={selectedPokemon.name} />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant="body2">
+                            {selectedPokemon.description}
+                        </Typography>
+                    </Grid>
                 </Grid>
-            </Grid>
-            <Typography color="text.secondary" gutterBottom>
-                
-            </Typography>
-            <Typography color="text.secondary">
-                adjective
-            </Typography>
-            <Typography variant="body2">
-                well meaning and kindly.
-            </Typography>
-        </CardContent>
+            </CardContent>
         </Card>
     );
 };
