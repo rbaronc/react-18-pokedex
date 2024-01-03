@@ -1,60 +1,52 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
-import { Pokemon } from "@/models";
-import { setSelectedPokemon } from "@/redux/slices/selected-pokemon-slice";
+import { RootState } from "@/redux/store/store";
 
 import "./styles.css";
 
-type PokemonItemProps = {
-    pokemon: Pokemon;
-};
-
-export default function PokemonItem({
-    pokemon,
-}: PokemonItemProps): React.ReactNode {
-    const dispatch = useDispatch();
-    const handlePokemonItemClick = (pokemon: Pokemon) => {
-        dispatch(setSelectedPokemon(pokemon));
-    };
+export default function PokemonDetails() {
+    const selectedPokemon = useSelector(
+        (state: RootState) => state.selectedPokemon.pokemon
+    );
 
     return (
-        <Card className="pokemon-item" variant="outlined">
+        <Card className="pokemon-details">
             <CardContent>
-                <Grid
-                    container
-                    onClick={() => {
-                        handlePokemonItemClick(pokemon);
-                    }}
-                >
-                    <Grid item className="id" xs={2}>
+                <Grid container>
+                    <Grid item className="id" xs={4}>
                         <Typography
                             variant="h5"
                             color="text.secondary"
                             gutterBottom
                         >
-                            #{pokemon.id}
+                            {selectedPokemon.id}
                         </Typography>
                     </Grid>
-                    <Grid item className="name" xs={10}>
+                    <Grid item className="name" xs={8}>
                         <Typography
                             variant="h5"
                             color="text.secondary"
                             gutterBottom
                         >
-                            {pokemon.name}
+                            {selectedPokemon.name}
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className="image-container">
                         <img
                             className="image"
-                            src={pokemon.listImageURL}
-                            alt={pokemon.name}
+                            loading="lazy"
+                            src={selectedPokemon.showDownImage}
+                            alt={selectedPokemon.name}
                         />
+                    </Grid>
+                    <Grid item xs={12} className="description">
+                        <Typography variant="h6">
+                            {selectedPokemon.description}
+                        </Typography>
                     </Grid>
                 </Grid>
             </CardContent>
